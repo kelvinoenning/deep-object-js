@@ -2,8 +2,15 @@ const { expect } = require('chai');
 let deep = require('../index')
 
 describe('index', () => {
-    it('import get method', () => {
-        expect(deep.get)
-            .to.be.an('function')
-    })
+    describe('get', () => {
+        it('import', () => expect(deep.get).to.be.an('function'))
+        it('should return correct value', () => {
+            let obj = {
+                a: 1,
+                b: 2,
+                c: [{ d: 3 }]
+            }
+            expect(deep.get(obj, 'c[0].d')).to.equal(3)
+        })
+    });
 });

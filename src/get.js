@@ -3,9 +3,9 @@ const _mountPathList = (path) => {
     return path.replace(/\[(\d+)]/g, '.$1').split('.')
 };
 
-const get = (obj, pathList, def) => {
+const get = (obj, path, def) => {
     if (typeof obj !== 'object') throw new Error('object is not a object')
-    else if (!Array.isArray(pathList)) throw new Error('path list is not array')
+    let pathList = _mountPathList(path);
     return (pathList.every(step => (obj = obj[step]) !== undefined)) ? obj : def;
 }
 

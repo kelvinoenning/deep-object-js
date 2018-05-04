@@ -4,7 +4,7 @@ const { _mountPathList, get } = require('../src/get')
 const ERROR_PATH = 'path is not a string';
 
 describe('Get', () => {
-    let json = {
+    let obj = {
         a: 1,
         b: 2,
         c: {
@@ -49,23 +49,18 @@ describe('Get', () => {
 
     describe('get', () => {
         it('should return correct value when def is not defined', () => {
-            expect(get(json, PATH_LIST))
-                .to.equal(json.c.cc3[0].cc31)
+            expect(get(obj, PATH))
+                .to.equal(obj.c.cc3[0].cc31)
         })
         it('should return correct value when def is defined', () => {
             let dafaultValue = 'default'
-            expect(get(json, ['fakePath'], dafaultValue))
+            expect(get(obj, 'fakePath', dafaultValue))
                 .to.equal(dafaultValue)
         })
         it('should throw error when object is not a object', () => {
             expect(() => get('fakeObject', PATH))
                 .to.throw()
                 .and.have.property('message', 'object is not a object')
-        })
-        it('should throw error when path list is not array', () => {
-            expect(() => get(json))
-                .to.throw()
-                .and.have.property('message', 'path list is not array')
         })
     });
 });
