@@ -60,7 +60,7 @@ describe('Get', () => {
         it('should throw error when object is not a object', () => {
             expect(() => get('fakeObject', PATH))
                 .to.throw()
-                .and.have.property('message', 'object is not a object')
+                .and.have.property('message', 'object is not accepted')
         })
     });
 });
