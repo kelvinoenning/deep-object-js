@@ -57,10 +57,8 @@ describe('Get', () => {
             expect(get(obj, 'fakePath', dafaultValue))
                 .to.equal(dafaultValue)
         })
-        it('should throw error when object is not a object', () => {
-            expect(() => get('fakeObject', PATH))
-                .to.throw()
-                .and.have.property('message', 'object is not accepted')
+        it('should return undefined when error', () => {
+            expect(get('fakeObject', PATH)).to.equal(undefined)
         })
     });
 });
