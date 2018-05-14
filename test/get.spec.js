@@ -60,5 +60,13 @@ describe('Get', () => {
         it('should return undefined when error', () => {
             expect(get('fakeObject', PATH)).to.equal(undefined)
         })
+        it('should return undefined when null', () => {
+            let obj = {
+                a: {
+                    a1: ''
+                }
+            }
+            expect(get(obj, 'a.a1')).to.equal(undefined)
+        })
     });
 });

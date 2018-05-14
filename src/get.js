@@ -7,7 +7,8 @@ const get = (obj, path, def) => {
     try {
         if (typeof obj !== 'object') throw new Error('object is not accepted')
         let pathList = _mountPathList(path);
-        return (pathList.every(step => (obj = obj[step]) !== undefined)) ? obj : def;
+        let value =  (pathList.every(step => (obj = obj[step]) !== undefined)) ? obj : def;
+        return value || undefined;
     } catch (err) {
         return undefined
     }
