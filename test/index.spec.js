@@ -13,4 +13,7 @@ describe('index', () => {
             expect(deep.get(obj, 'c[0].d')).to.equal(3)
         })
     });
+    describe('isObject', () => {
+        it('import', () => expect(deep.isObject).to.be.an('function'));
+    });
 });

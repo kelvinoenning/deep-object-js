@@ -1,4 +1,4 @@
-const isObject = require('./isObject');
+const { isObject } = require('./isObject');
 
 const _mountPathList = (path) => {
     if (typeof path !== 'string') throw new Error('path is not a string')
