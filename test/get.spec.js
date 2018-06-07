@@ -53,12 +53,17 @@ describe('Get', () => {
                 .to.equal(obj.c.cc3[0].cc31)
         })
         it('should return correct value when def is defined', () => {
-            let dafaultValue = 'default'
-            expect(get(obj, 'fakePath', dafaultValue))
-                .to.equal(dafaultValue)
+            let defaultValue = 'default'
+            expect(get(obj, 'fakePath', defaultValue)).to.equal(defaultValue)
         })
-        it('should return undefined when error', () => {
+        it('should return undefined when error and def is not defined', () => {
             expect(get('fakeObject', PATH)).to.equal(undefined)
+        })
+        it('should return correct value when error and def is defined', () => {
+            let defaultValue = 'default'
+            expect(get(null, 'fakePath', defaultValue)).to.equal(defaultValue)
+            expect(get(undefined, 'fakePath', defaultValue)).to.equal(defaultValue)
+            expect(get('fakeObject', PATH, defaultValue)).to.equal(defaultValue)
         })
         it('should return undefined when null', () => {
             let obj = {
