@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-let isObject = require('../src/isObject')
+let { isObject } = require('../src/isObject')
 
 describe('isObject', () => {
     it('should return true', () => {

@@ -55,6 +55,10 @@ describe('Get', () => {
         it('should return correct value when def is defined', () => {
             let defaultValue = 'default'
             expect(get(obj, 'fakePath', defaultValue)).to.equal(defaultValue)
+            expect(get(obj, 'fakePath', '')).to.equal('')
+            expect(get(obj, 'fakePath', 0)).to.equal(0)
+            expect(get(obj, 'fakePath', null)).to.equal(null)
+            expect(get(obj, 'fakePath', undefined)).to.equal(undefined)
         })
         it('should return undefined when error and def is not defined', () => {
             expect(get('fakeObject', PATH)).to.equal(undefined)
@@ -64,14 +68,6 @@ describe('Get', () => {
             expect(get(null, 'fakePath', defaultValue)).to.equal(defaultValue)
             expect(get(undefined, 'fakePath', defaultValue)).to.equal(defaultValue)
             expect(get('fakeObject', PATH, defaultValue)).to.equal(defaultValue)
-        })
-        it('should return undefined when null', () => {
-            let obj = {
-                a: {
-                    a1: ''
-                }
-            }
-            expect(get(obj, 'a.a1')).to.equal(undefined)
         })
     });
 });

@@ -19,4 +19,6 @@ const isObject = (obj) => {
     return typeof obj === 'object' && obj === Object(obj) && !Array.isArray(obj);
 }
 
-module.exports = isObject;
+module.exports = {
+    isObject
+};

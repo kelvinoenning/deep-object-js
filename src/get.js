@@ -1,4 +1,4 @@
-const isObject = require('./isObject');
+const { isObject } = require('./isObject');
 
 const _mountPathList = (path) => {
     if (typeof path !== 'string') throw new Error('path is not a string')
@@ -10,7 +10,7 @@ const get = (obj, path, def) => {
         if (!isObject(obj)) throw new Error('object is not accepted')
         let pathList = _mountPathList(path);
         let value = (pathList.every(step => (obj = obj[step]) !== undefined)) ? obj : def;
-        return value || undefined;
+        return value;
     } catch (err) {
         return (def !== undefined) ? def : undefined;
     }
